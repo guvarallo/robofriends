@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox'
@@ -23,31 +24,30 @@ const mapDispatchToProps = dispatch => {
   } 
 }
 
-class App extends Component {
+const App = (props) => {
+  const { searchfield, onSearchChange, onRequestRobots, robots, isPending } = props;
+  const filteredRobots = robots.filter(robot => {
+    return robot.firstName.toLowerCase().includes(searchfield.toLowerCase());
+  })
 
-  componentDidMount() {
-    this.props.onRequestRobots();
-  }
-
-  render() {
-    const { searchfield, onSearchChange, robots, isPending } = this.props;
-    const filteredRobots = robots.filter(robot => {
-      return robot.firstName.toLowerCase().includes(searchfield.toLowerCase());
-    })
-    return isPending ?
-      <h1>Loading</h1> :
-    (
-      <div className='tc'>
-        <h1 className='f1'>RoboFriends</h1>
-        <SearchBox searchChange={onSearchChange}/><br/>
-        <Scroll>
-          <ErrorBoundary>
-            <CardList robots = {filteredRobots}/>
-          </ErrorBoundary>
-        </Scroll>
-      </div>
-    );
-  }
+  useEffect(() => {
+    onRequestRobots();
+  }, []);
+    
+  return isPending ?
+    <h1>Loading</h1> :
+  (
+    <div className='tc'>
+      <h1 className='f1'>RoboFriends</h1>
+      <SearchBox searchChange={onSearchChange}/><br/>
+      <Scroll>
+        <ErrorBoundary>
+          <CardList robots = {filteredRobots}/>
+        </ErrorBoundary>
+      </Scroll>
+    </div>
+  );
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
