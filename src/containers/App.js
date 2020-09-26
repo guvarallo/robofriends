@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CardList from '../components/CardList';
@@ -21,7 +20,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: event => dispatch(setSearchField(event.target.value)),
     onRequestRobots: () => dispatch(requestRobots())
-  } 
+  }
 }
 
 const App = (props) => {
@@ -33,20 +32,20 @@ const App = (props) => {
   useEffect(() => {
     onRequestRobots();
   }, []);
-    
+
   return isPending ?
     <h1 style={{ textAlign: "center" }}>Loading</h1> :
-  (
-    <div className='tc'>
-      <h1 className='f1'>RoboFriends</h1>
-      <SearchBox searchChange={onSearchChange}/><br/>
-      <Scroll>
-        <ErrorBoundary>
-          <CardList robots = {filteredRobots}/>
-        </ErrorBoundary>
-      </Scroll>
-    </div>
-  );
+    (
+      <div className='tc'>
+        <h1 className='f1'>RoboFriends</h1>
+        <SearchBox searchChange={onSearchChange} /><br />
+        <Scroll>
+          <ErrorBoundary>
+            <CardList robots={filteredRobots} />
+          </ErrorBoundary>
+        </Scroll>
+      </div>
+    );
 }
 
 

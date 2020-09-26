@@ -1,5 +1,5 @@
-import { 
-  CHANGE_SEARCH_FIELD, 
+import {
+  CHANGE_SEARCH_FIELD,
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED
@@ -14,7 +14,7 @@ export const setSearchField = text => ({
 
 export const requestRobots = () => dispatch => {
   dispatch({ type: REQUEST_ROBOTS_PENDING });
-  fetch('https://dummyapi.io/data/api/user?limit=30', {
+  fetch("https://dummyapi.io/data/api/user?limit=30", {
     headers: { 'app-id': apiConfig.apiKey }
   })
     .then(response => response.json())

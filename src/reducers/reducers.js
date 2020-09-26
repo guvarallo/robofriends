@@ -1,5 +1,5 @@
-import { 
-  CHANGE_SEARCH_FIELD, 
+import {
+  CHANGE_SEARCH_FIELD,
   REQUEST_ROBOTS_PENDING,
   REQUEST_ROBOTS_SUCCESS,
   REQUEST_ROBOTS_FAILED
@@ -9,8 +9,8 @@ const initialStateSearch = {
   searchfield: ''
 }
 
-export const searchRobots = (state=initialStateSearch, action={}) => {
-  switch(action.type) {
+export const searchRobots = (state = initialStateSearch, action = {}) => {
+  switch (action.type) {
     case CHANGE_SEARCH_FIELD:
       return Object.assign({}, state, { searchfield: action.payload });
     default:
@@ -24,7 +24,7 @@ const initialStateRobots = {
   error: ''
 }
 
-export const requestRobots = (state=initialStateRobots, action={}) => {
+export const requestRobots = (state = initialStateRobots, action = {}) => {
   switch (action.type) {
     case REQUEST_ROBOTS_PENDING:
       return Object.assign({}, state, { isPending: true });
