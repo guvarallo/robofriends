@@ -1,7 +1,6 @@
 <h1 align="center">Robofriends</h1>
 
 <h3 align="center">A react app to search for your robot friends</h3>
-<br />
 
 <div align="center">
 
