@@ -31,6 +31,7 @@ const App = (props) => {
 
   useEffect(() => {
     onRequestRobots();
+    // eslint-disable-next-line
   }, []);
 
   return isPending ?
