@@ -6,4 +6,7 @@ import { searchRobots, requestRobots } from '../reducers/reducers';
 
 const logger = createLogger();
 const rootReducer = combineReducers({ searchRobots, requestRobots });
-export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(thunkMiddleware, logger),
+);
