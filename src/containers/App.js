@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import CardList from '../components/CardList';
-import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
-import ErrorBoundary from '../components/ErrorBoundary';
 import './App.css';
 import { setSearchField, requestRobots } from '../actions/actions';
+import MainPage from '../components/MainPage';
 
 const mapStateToProps = (state) => {
   return {
@@ -25,36 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
-  const {
-    searchfield,
-    onSearchChange,
-    onRequestRobots,
-    robots,
-    isPending,
-  } = props;
-  const filteredRobots = robots.filter((robot) => {
-    return robot.firstName.toLowerCase().includes(searchfield.toLowerCase());
-  });
-
-  useEffect(() => {
-    onRequestRobots();
-    // eslint-disable-next-line
-  }, []);
-
-  return isPending ? (
-    <h1 style={{ textAlign: 'center' }}>Loading</h1>
-  ) : (
-    <div className="tc">
-      <h1 className="f1">RoboFriends</h1>
-      <SearchBox searchChange={onSearchChange} />
-      <br />
-      <Scroll>
-        <ErrorBoundary>
-          <CardList robots={filteredRobots} />
-        </ErrorBoundary>
-      </Scroll>
-    </div>
-  );
+  return <MainPage {...props} />;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

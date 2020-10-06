@@ -1,0 +1,11 @@
+@font-face {
+  font-display: swap;
+  font-family: 'OLED Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('OLED Bold'), url('../containers/OLED.woff') format('woff');
+  }
+
+  h1 {
+    font-family: 'OLED Bold';
+  }
